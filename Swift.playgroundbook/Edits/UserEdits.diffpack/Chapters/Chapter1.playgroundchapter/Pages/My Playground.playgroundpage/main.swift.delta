@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Diff</key>
+	<array>
+		<dict>
+			<key>ModifiedContent</key>
+			<string>// degiskenler
+var name = "Ali"
+let name2: String = "Hasan"
+var name3: String?
+let number: Int = 5
+let dogcow = "🐶🐮"
+
+// print
+print(name)
+print(name + name2)
+print("\(name) \(number) \(name2)")
+print(name3)
+
+/* This is also a comment
+ dsdasd
+ dasdasd
+but is written over multiple lines. */
+name = "Ahmet"
+print(name)
+print(dogcow)
+
+print("The current value of friendlyWelcome is \(name)")
+
+let cat = "🐱"; print(cat)
+
+// Double
+let pi = 3.14159
+print(pi)
+// Int
+let integerPi = Int(pi)
+print(integerPi)
+
+// typealias
+print("///////////////////////////")
+typealias YaziTip = String
+var yaziSabit: YaziTip = "yazi"
+print(yaziSabit)
+
+// tuples
+print("///////////////////////////")
+var isSuccessful = false
+let http404Error = (
+    statusCode: 404, 
+    message: "Not Found", 
+    status: isSuccessful
+)
+print(http404Error)
+print(http404Error.status)
+
+// optionals
+print("///////////////////////////")
+let possibleNumber = "1222"
+let convertedNumber = Int(possibleNumber)
+
+print("optional: \(convertedNumber)")
+// print("force unwrap: \(convertedNumber!)")
+print("default value: \(convertedNumber ?? 0)")
+
+if let number = convertedNumber {
+    print("if let: \(number)")
+} else {
+    print("optional value")
+}
+
+if let convertedNumber = convertedNumber {
+    print("if let: \(convertedNumber)")
+} else {
+    print("optional value")
+}
+
+if let convertedNumber {
+    print("if let: \(convertedNumber)")
+} else {
+    print("optional value")
+}
+
+func unwrapNumber() {
+    guard let convertedNumber else { return }
+    print("guard let: \(convertedNumber)")
+}
+
+unwrapNumber()
+
+print("///////////////////////////")
+let a: String? = nil
+var b: String = "bos"
+
+print(a != nil ? a! : b)
+
+if a != nil {
+    print(a!)
+} else {
+    print(b)
+}
+
+for index in 1...5 {
+    print("\(index) times 5 is \(index * 5)")
+}
+
+let names = ["Anna", "Alex", "Brian", "Jack"]
+let count = names.count
+for i in 0..&lt;count {
+    print("Person \(i + 1) is called \(names[i])")
+}
+for name in names {
+    print(name)
+}
+
+// collections
+print("///////////// collections //////////////")
+var someInts: [Int] = [10, 20]
+var someInts2 = [Int]()
+
+someInts.append(5)
+someInts2.append(1)
+someInts.append(contentsOf: someInts2)
+someInts2 = []
+
+print(someInts[someInts.count - 1])
+print(someInts2)
+
+var threeDoubles = Array(repeating: "a", count: 9)
+print(threeDoubles)
+
+var shoppingList = ["Eggs", "Milk", "Milk"]
+for (index, value) in shoppingList.enumerated() {
+    print("Item \(index + 1): \(value)")
+}
+
+var favoriteGenres: Set&lt;String&gt; = ["Rock", "Classical", "Hip hop"]
+favoriteGenres.insert("Jazz")
+print(favoriteGenres.sorted())
+
+var namesOfIntegers: [Int: String] = [:]
+namesOfIntegers[16] = "sixteen"
+
+print(namesOfIntegers)
+print(namesOfIntegers[1])
+
+// functions
+print("///////////// functions //////////////")
+
+
+func greet(_ person: String) -&gt; String {
+    let greeting = "Hello, " + person + "!"
+    return greeting
+}
+
+func greet(to person: String) -&gt; String {
+    let greeting = "Hello, " + person + "!"
+    return greeting
+}
+
+func greet(person: String) -&gt; String {
+    let greeting = "Hello, " + person + "!"
+    return greeting
+}
+
+func greet(label: String) {
+    print(label)
+}
+
+let isim = greet("Ali")
+let isim2 = greet(to: "Ahmet")
+let isim3 = greet(person: "Zeynep")
+
+print(isim)
+print(isim2)
+print(isim3)
+
+greet(label: "Merhaba")
+
+
+// closures
+print("///////////// closures //////////////")
+
+func loadImage(named: String, completion: @escaping (String) -&gt; Void) {
+    print("\(named) Image Loaded")
+    completion("finish")
+}
+
+loadImage(named: "Foto") { result in 
+    print(result)
+}
+
+
+// enums
+print("///////////// enums //////////////")
+
+enum CompassPoint {
+    case north(Int)
+    case south
+    case east
+    case west
+}
+
+enum Planet: String {
+    case mercury, venus, earth, mars, jupiter, saturn, uranus
+    case neptune = "Neptune"
+}
+
+var directionToHead = CompassPoint.north(5)
+
+var planet: Planet = .neptune
+
+
+switch directionToHead {
+case .north(let number):
+    print("Lots of planets have a north")
+    print(number)
+case .south:
+    print("Watch out for penguins")
+case .east:
+    print("Where the sun rises")
+case .west:
+    print("west")
+}
+
+print(planet.rawValue)
+
+//if directionToHead == .south {
+//    print("Guney")
+//} else if directionToHead == .east {
+//    print("Dogu")
+//} else {
+//    print("Nothing Else")
+//}
+
+// class - struct
+print("///////////// class - struct //////////////")
+
+struct Person {
+    var name: String
+    var lastName: String
+}
+
+class PersonClass {
+    
+    // MARK: - Properties
+    
+    fileprivate var name: String {
+        didSet {
+            print("didSet: " + oldValue)
+            print("didSet: " + name)
+        }
+    }
+    
+    private var lastName: String
+    
+    static var age: Int = 5
+    
+    var fullName: String {
+        name + " " + lastName
+    }
+    
+    init(name: String, lastName: String) {
+        self.name = name
+        self.lastName = lastName
+    }
+    
+    func printer() {
+        print(fullName)
+    }
+    
+    func fullNameFunc() -&gt; String {
+        name + " " + lastName
+    }
+    
+    static func printAge() {
+        print("age: \(age)")
+    }
+}
+
+var person = Person(name: "Ahmet", lastName: "Yildiz")
+var person2 = Person(name: "Veli", lastName: "Bey")
+
+let personClass = PersonClass(name: "Ali", lastName: "Bulut")
+var personClass2 = PersonClass(name: "Sema", lastName: "Altin")
+
+person2 = person
+personClass2 = personClass
+
+// struct
+person.name = "Hasan"
+print(person.name)
+print(person2.name)
+
+// class
+personClass.name = "Bilal"
+personClass.printer()
+personClass2.printer()
+
+PersonClass.printAge()
+
+
+
+
+
+</string>
+			<key>ModifiedRange</key>
+			<string>{0, 5567}</string>
+			<key>OriginalContent</key>
+			<string></string>
+			<key>OriginalRange</key>
+			<string>{0, 0}</string>
+		</dict>
+	</array>
+	<key>File</key>
+	<string>Chapters/Chapter1.playgroundchapter/Pages/My Playground.playgroundpage/main.swift</string>
+</dict>
+</plist>
