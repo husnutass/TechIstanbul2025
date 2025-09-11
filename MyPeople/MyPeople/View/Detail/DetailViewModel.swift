@@ -7,19 +7,15 @@
 
 import Foundation
 
-@MainActor
-final class DetailViewModel: ObservableObject {
-    
-    private let apiManager = APIManager()
+final class DetailViewModel: BaseViewModel<UserService> {
     
     @Published var user: User?
     
     func fetchUser(withId id: String) async {
         do {
-            user = try await apiManager.fetchData(urlString: "https://userlistapi.netlify.app/api/users/\(id)")
+            user = try await service.getUser(withId: id)
         } catch {
             print(error.localizedDescription)
         }
     }
-    
 }

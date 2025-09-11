@@ -7,16 +7,23 @@
 
 import Foundation
 
-@MainActor
-final class HomeViewModel: ObservableObject {
-    
-    private let apiManager = APIManager()
-    
+final class HomeViewModel: BaseViewModel<UserService> {
+        
     @Published var users: [User] = []
     
     func getUsers() async {
         do {
-            users = try await apiManager.fetchData(urlString: "https://userlistapi.netlify.app/api/users")
+            users = try await service.getUsers()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func deleteUser(at index: Int) async {
+        let idToDelete = users[index].id
+        
+        do {
+            let _ = try await service.deleteUser(withId: idToDelete)
         } catch {
             print(error.localizedDescription)
         }
